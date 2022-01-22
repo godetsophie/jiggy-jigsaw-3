@@ -27,7 +27,7 @@ class ViewTest(TestCase):
         @classmethod
         def setUpClass(cls):
             super(ViewTest, cls).setUpClass()
- 
+  
     # def test_unit_home(self):
     #     """Tests the home page."""
     #     response = self.client.get('/')
