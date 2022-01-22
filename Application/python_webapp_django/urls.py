@@ -41,7 +41,7 @@ urlpatterns = [
             'next_page': '/',
         },
         name='logout'),
-    path('static/(?P<path>.*)', serve,{'document_root': settings.STATIC_ROOT}),
+    path('static/(<path>.*)', serve,{'document_root': settings.STATIC_ROOT}),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
