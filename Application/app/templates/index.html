@@ -2,20 +2,11 @@
 
 {% block content %}
 {% load static %}
-<div class="main-container">
-    <div class="cloud-image">
-        <img src="{% static "app/img/successCloudNew.svg" %}" />
-    </div>
+<div class="main-container" style="height: auto;">
     <div class="content">
-        <div class="tweet-container">
-            <a href="http://twitter.com/intent/tweet/?text=I%20just%20created%20a%20new%20Python%20Django%20website%20on%20Azure%20using%20Github%20Actions&hashtags=GithubActions%20%40Azure">
-                <img src="{% static "app/img/tweetThis.svg" %}" />
-            </a>            
-        </div>
         <div class="content-body">
-            <div class="success-text">Success! by Sophie Godet</div>
-            <div class="description line-1"> GitHub workflow has been successfully setup</div>
-            <div class="description line-2"> Your Python Django app is up and running on Azure</div>
+            <div class="success-text">Jiggy Jigsaw</div>
+            <div class="description">This is a technical test. Enjoy!</div>
         </div>
     </div>
 </div>
@@ -36,6 +27,9 @@
         <p><a class="btn btn-default" href="{% url 'signup' %}">Sign up &raquo;</a></p>
     </div>
     {% endif %}
+    <div class="col-md-4">
+        <img src="{% static "app/img/jiggy.jpg" %}" />        
+    </div>
 </div>
 
 {% endblock %}
