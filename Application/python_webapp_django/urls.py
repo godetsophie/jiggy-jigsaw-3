@@ -3,13 +3,13 @@ Definition of urls for python_webapp_django.
 """
 
 from datetime import datetime
-from django.conf.urls import url
+from django.urls import re_path
 import django.contrib.auth.views
 from django.views.static import serve
 from django.conf import settings
-
 import app.forms
-import app.views
+import app.views as a_v
+from app.views import signup_view
 
 # Uncomment the next lines to enable the admin:
 # from django.conf.urls import include
@@ -18,11 +18,12 @@ import app.views
 
 urlpatterns = [
     # Examples:
-    url(r'^$', app.views.home, name='home'),
-    url(r'^contact$', app.views.contact, name='contact'),
-    url(r'^about', app.views.about, name='about'),
-    url(r'^login/$',
-        django.contrib.auth.views.login,
+    re_path(r'^$', app.views.home, name='home'),
+    re_path(r'^contact$', app.views.contact, name='contact'),
+    re_path(r'^about', app.views.about, name='about'),
+    re_path(r'^play', app.views.about, name='play'),
+    re_path(r'^login/$',
+        django.contrib.auth.views.LoginView.as_view(),
         {
             'template_name': 'login.html',
             'authentication_form': app.forms.BootstrapAuthenticationForm,
@@ -33,17 +34,18 @@ urlpatterns = [
             }
         },
         name='login'),
-    url(r'^logout$',
-        django.contrib.auth.views.logout,
+    re_path(r'^signup/', signup_view, name='signup'),
+    re_path(r'^logout$',
+        django.contrib.auth.views.LogoutView.as_view(),
         {
             'next_page': '/',
         },
         name='logout'),
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 
     # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # re_path(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    #re_path(r'^admin/', include(admin.site.urls)),
 ]
